@@ -1,4 +1,4 @@
-package com.lanou.lilyxiao.myapplication;
+package com.lanou.lilyxiao.myapplication.camera;
 
 /**
  * 　　　　　　　　┏┓　　　┏┓+ +
