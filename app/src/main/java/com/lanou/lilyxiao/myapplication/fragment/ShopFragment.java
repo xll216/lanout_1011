@@ -1,12 +1,9 @@
-package com.lanou.lilyxiao.myapplication.adapter;
+package com.lanou.lilyxiao.myapplication.fragment;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.os.Bundle;
+import android.view.View;
 
-import com.lanou.lilyxiao.myapplication.fragment.BaseFragment;
-
-import java.util.List;
+import com.lanou.lilyxiao.myapplication.R;
 
 /**
  * 　　　　　　　　┏┓　　　┏┓+ +
@@ -31,37 +28,15 @@ import java.util.List;
  * 　　　　　　　　　　┃┫┫　┃┫┫
  * 　　　　　　　　　　┗┻┛　┗┻┛+ + + +
  */
-public class BaseFragmentPagerAdapter extends FragmentPagerAdapter {
-    private List<BaseFragment> mFragments;
-    private List<String> titles;
 
-    public void setFragments(List<BaseFragment> fragments, List<String> titles) {
-        mFragments = fragments;
-        this.titles = titles;
-        notifyDataSetChanged();
-    }
+public class ShopFragment extends BaseFragment {
+    @Override
+    protected void initView(View view, Bundle savedInstanceState) {
 
-    public BaseFragmentPagerAdapter(FragmentManager fm) {
-        super(fm);
-    }
-
-    public BaseFragmentPagerAdapter(FragmentManager fm, List<BaseFragment> fragments) {
-        super(fm);
-        mFragments = fragments;
     }
 
     @Override
-    public Fragment getItem(int position) {
-        return mFragments.get(position);
-    }
-
-    @Override
-    public int getCount() {
-        return mFragments != null ? mFragments.size() : 0;
-    }
-
-    @Override
-    public CharSequence getPageTitle(int position) {
-        return titles.get(position);
+    protected int getLayoutId() {
+        return R.layout.fragment_shop;
     }
 }

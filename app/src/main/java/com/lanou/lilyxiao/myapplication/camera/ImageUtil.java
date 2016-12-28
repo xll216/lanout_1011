@@ -1,12 +1,7 @@
-package com.lanou.lilyxiao.myapplication.adapter;
+package com.lanou.lilyxiao.myapplication.camera;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-
-import com.lanou.lilyxiao.myapplication.fragment.BaseFragment;
-
-import java.util.List;
+import android.graphics.Bitmap;
+import android.graphics.Matrix;
 
 /**
  * 　　　　　　　　┏┓　　　┏┓+ +
@@ -31,37 +26,18 @@ import java.util.List;
  * 　　　　　　　　　　┃┫┫　┃┫┫
  * 　　　　　　　　　　┗┻┛　┗┻┛+ + + +
  */
-public class BaseFragmentPagerAdapter extends FragmentPagerAdapter {
-    private List<BaseFragment> mFragments;
-    private List<String> titles;
 
-    public void setFragments(List<BaseFragment> fragments, List<String> titles) {
-        mFragments = fragments;
-        this.titles = titles;
-        notifyDataSetChanged();
-    }
-
-    public BaseFragmentPagerAdapter(FragmentManager fm) {
-        super(fm);
-    }
-
-    public BaseFragmentPagerAdapter(FragmentManager fm, List<BaseFragment> fragments) {
-        super(fm);
-        mFragments = fragments;
-    }
-
-    @Override
-    public Fragment getItem(int position) {
-        return mFragments.get(position);
-    }
-
-    @Override
-    public int getCount() {
-        return mFragments != null ? mFragments.size() : 0;
-    }
-
-    @Override
-    public CharSequence getPageTitle(int position) {
-        return titles.get(position);
+public class ImageUtil {
+    /**
+     * 旋转Bitmap
+     * @param b
+     * @param rotateDegree
+     * @return
+     */
+    public static Bitmap getRotateBitmap(Bitmap b, float rotateDegree){
+        Matrix matrix = new Matrix();
+        matrix.postRotate((float)rotateDegree);
+        Bitmap rotaBitmap = Bitmap.createBitmap(b, 0, 0, b.getWidth(), b.getHeight(), matrix, false);
+        return rotaBitmap;
     }
 }

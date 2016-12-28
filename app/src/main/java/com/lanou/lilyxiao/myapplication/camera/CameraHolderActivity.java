@@ -78,6 +78,11 @@ public class CameraHolderActivity extends BaseActivity {
     }
 
     @Override
+    protected void initListener() {
+
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         /*释放摄像头*/

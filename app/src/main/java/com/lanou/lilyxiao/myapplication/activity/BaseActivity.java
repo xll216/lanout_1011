@@ -9,6 +9,8 @@ import android.widget.Toast;
 
 import com.lanou.lilyxiao.myapplication.util.Constant;
 
+import butterknife.ButterKnife;
+
 /**
  * 　　　　　　　　┏┓　　　┏┓+ +
  * 　　　　　　　┏┛┻━━━┛┻┓ + +
@@ -39,8 +41,12 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
+
+        ButterKnife.bind(this);
+
         initView();
         setOnClick();
+        initListener();
         initData();
 
     }
@@ -56,6 +62,8 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
 
     /*初始化数据*/
     protected abstract void initData();
+    /*初始化监听*/
+    protected abstract void initListener();
 
 
     /**
@@ -88,5 +96,11 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     @Override
     public void onClick(View view) {
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ButterKnife.unbind(this);
     }
 }

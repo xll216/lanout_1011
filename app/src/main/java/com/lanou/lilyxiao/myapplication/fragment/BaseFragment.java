@@ -14,6 +14,8 @@ import android.widget.Toast;
 import com.lanou.lilyxiao.myapplication.activity.BaseActivity;
 import com.lanou.lilyxiao.myapplication.util.Constant;
 
+import butterknife.ButterKnife;
+
 /**
  * 　　　　　　　　┏┓　　　┏┓+ +
  * 　　　　　　　┏┛┻━━━┛┻┓ + +
@@ -62,6 +64,8 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(getLayoutId(), container, false);
+
+        ButterKnife.bind(this, v);
         return v;
     }
 
@@ -96,5 +100,13 @@ public abstract class BaseFragment extends Fragment {
     /*弹出一个吐司*/
     protected void showToast(String str) {
         Toast.makeText(mActivity, str, Toast.LENGTH_SHORT).show();
+    }
+
+
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.unbind(this);
     }
 }

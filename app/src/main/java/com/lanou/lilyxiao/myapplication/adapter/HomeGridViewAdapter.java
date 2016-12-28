@@ -1,12 +1,14 @@
 package com.lanou.lilyxiao.myapplication.adapter;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.util.SparseArray;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 
-import com.lanou.lilyxiao.myapplication.fragment.BaseFragment;
+import com.lanou.lilyxiao.myapplication.R;
 
-import java.util.List;
+import java.util.Random;
 
 /**
  * 　　　　　　　　┏┓　　　┏┓+ +
@@ -14,7 +16,7 @@ import java.util.List;
  * 　　　　　　　┃　　　　　　　┃
  * 　　　　　　　┃　　　━　　　┃ ++ + + +
  * 　　　　　　 ████━████ ┃+
- * 　　　　　　　┃　　　　　　　┃ +
+ * 　　　　　　　┃　　　　　　　┃ +……
  * 　　　　　　　┃　　　┻　　　┃
  * 　　　　　　　┃　　　　　　　┃ + +
  * 　　　　　　　┗━┓　　　┏━┛
@@ -31,37 +33,34 @@ import java.util.List;
  * 　　　　　　　　　　┃┫┫　┃┫┫
  * 　　　　　　　　　　┗┻┛　┗┻┛+ + + +
  */
-public class BaseFragmentPagerAdapter extends FragmentPagerAdapter {
-    private List<BaseFragment> mFragments;
-    private List<String> titles;
 
-    public void setFragments(List<BaseFragment> fragments, List<String> titles) {
-        mFragments = fragments;
-        this.titles = titles;
-        notifyDataSetChanged();
-    }
-
-    public BaseFragmentPagerAdapter(FragmentManager fm) {
-        super(fm);
-    }
-
-    public BaseFragmentPagerAdapter(FragmentManager fm, List<BaseFragment> fragments) {
-        super(fm);
-        mFragments = fragments;
-    }
-
-    @Override
-    public Fragment getItem(int position) {
-        return mFragments.get(position);
+public class HomeGridViewAdapter extends BaseAdapter {
+    public HomeGridViewAdapter() {
     }
 
     @Override
     public int getCount() {
-        return mFragments != null ? mFragments.size() : 0;
+        return 10;
     }
 
     @Override
-    public CharSequence getPageTitle(int position) {
-        return titles.get(position);
+    public Object getItem(int i) {
+        return null;
     }
+
+    @Override
+    public long getItemId(int i) {
+        return 0;
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup viewGroup) {
+        if (convertView == null) {
+            convertView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.gridview_item, viewGroup, false);
+
+        }
+
+        return convertView;
+    }
+
 }
